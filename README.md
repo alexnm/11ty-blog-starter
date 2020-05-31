@@ -1,6 +1,8 @@
 # 11ty Blog Starter
 
-Based of https://github.com/11ty/eleventy-base-blog
+Demo: https://11ty-blog-starter.netlify.app/
+
+Based on https://github.com/11ty/eleventy-base-blog
 
 ## Setup
 
