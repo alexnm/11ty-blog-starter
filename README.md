@@ -1,6 +1,6 @@
 # 11ty Blog Starter
 
-Based of https://github.com/11ty/eleventy-base-blog
+Based on https://github.com/11ty/eleventy-base-blog
 
 ## Setup
 
