@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<div class="wide-content">
+  <h1>11ty Blog Starter</h1>
+  <p>Start writing your content without worrying about the setup and how to convert your markdown files to html pages. 11ty has you covered.</p>
+  {% set tags = collections.tagList %}
+  {% include "components/tagcloud.njk" %}
+  {% set postslist = collections.posts | head(-3) %}
+  {% include "components/postslist.njk" %}
+</div>

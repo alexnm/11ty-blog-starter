@@ -1,0 +1,24 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - tagList
+  addAllPagesToCollections: true
+layout: layouts/base.njk
+renderData:
+  pageTitle: Read about {{ tag }}
+permalink: /tags/{{ tag | slug }}/
+---
+
+<div class="wide-content">
+  <h1>Read about {{ tag }}</h1>
+  {% set postslist = collections[ tag ] %}
+  {% include "components/postslist.njk" %}
+  <p><a class="link-button" href="{{ '/tags/' | url }}">See all categories</a></p>
+</div>

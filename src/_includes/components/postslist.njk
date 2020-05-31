@@ -1,0 +1,18 @@
+<ul class="post-list">
+  {% for post in postslist %}
+    <li>
+      <article class="post-card">
+        <a class="post-image-link" href="{{post.url | url}}" title="{{post.data.pageTitle}}" tabindex="-1" aria-hidden="true">
+          <div class="post-image" style="background-image: url('{{ post.data.coverThumb }}')"></div>
+        </a>
+        <div class="post-content">
+          <div class="post-title">
+            <h2>{{ post.data.pageTitle }}</h2>
+          </div>
+          <p class="post-text">{{ post.data.headline }}</p>
+          <a class="post-cta link-button" href="{{post.url | url}}" title="{{post.data.pageTitle}}">Read more</a>
+        </div>
+      </article>
+    </li>
+  {% endfor %}
+</ul>

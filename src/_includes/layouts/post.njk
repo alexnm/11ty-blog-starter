@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="text-content">
+  <h1>{{pageTitle}}</h1>
+  <div>Reading time: {{ content | readingTime }} read</div>
+  <div>
+    <p>This article covers:</p>
+    {{ content | toc | safe }}
+  </div>
+
+  <article class="markdown-content">
+    {{ content | safe }}
+  </article>
+
+  <span>
+    Share this story on
+    <a href="https://twitter.com/share?text={{ pageTitle | url }}&url={{metadata.baseURL}}{{ page.url | url }}" target="_blank" rel="noopener noreferrer" class="link accent">Twitter</a>
+    or 
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://{{metadata.baseURL}}{{ page.url | url }}" target="_blank" rel="noopener noreferrer" class="link accent" >Facebook</a>
+  </span>
+</div>
+
+<div class="wide-content text-center">
+  <h2>You might also enjoy</h2>
+  {% set postslist = collections.posts | head(-3) %}
+  {% include "components/postslist.njk" %}
+</div>
+

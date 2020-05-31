@@ -1,0 +1,16 @@
+{
+  "title": "My Blog",
+  "fullTitle": "My Blog | My thoughts on digital paper",
+  "baseURL": "https://example.com",
+  "description": "This is the personal blog of Jane Doe.",
+  "image": "https://example.com/img/social-media-card-image.jpg",
+  "author": {
+    "name": "Jane Doe",
+    "email": "jane@doe.com"
+  },
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/myblog/",
+    "instagram": "https://www.instagram.com/myblog/",
+    "pinterest": "https://pinterest.com/myblog/"
+  }
+}

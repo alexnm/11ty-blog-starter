@@ -1,0 +1,14 @@
+---
+permalink: /tags/
+layout: layouts/base.njk
+pageTitle: Tags
+eleventyNavigation:
+  key: Categories
+  order: 3
+---
+
+<div class="wide-content">
+  <h1>Explore</h1>
+  {% set tags = collections.tagList %}
+  {% include "components/tagcloud.njk" %}
+</div>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if pageTitle or renderData.pageTitle %}
+      {% set titleFromPage = (pageTitle or renderData.pageTitle) + " | " + metadata.title %}
+    {% endif %}
+    <title>{{ titleFromPage or metadata.fullTitle }}</title>
+    <meta name="description" content="{{ subTitle or metadata.description }}">
+    {% if coverImage %}
+      {% set coverImageURL = metadata.baseURL + coverImage %}
+    {% endif %}
+    
+    {% set fontURL = "https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap&subset=latin" %}
+
+    <meta property="og:title" content="{{ pageTitle or renderData.pageTitle or metadata.title }}">
+    <meta property="og:description" content="{{ subTitle or metadata.description }}">
+    <meta property="og:image" content="{{ coverImageURL or metadata.image }}">
+    <meta property="og:url" content="{{metadata.baseURL}}{{page.url}}">
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- <meta name="p:domain_verify" content=""/> -->
+    <!-- <meta name="google-site-verification" content="" /> -->
+    <!-- <meta name="theme-color" content=""> -->
+
+    <link rel="canonical" href="{{metadata.baseURL}}{{page.url}}" />
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- https://csswizardry.com/2020/05/the-fastest-google-fonts/ -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="{{fontURL}}" />
+    <link rel="stylesheet" href="{{fontURL}}" media="print" onload="this.media='all'" />
+    
+    <!-- inline css -->
+    <style>
+      {% postcss %}
+        {% include "css/index.css" %}
+      {% endpostcss %}
+    </style>
+
+    <!-- schema.org https://developers.google.com/search/docs/guides/intro-structured-data -->
+    <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "name" : {{metadata.author.name}},
+      "url" : {{metadata.baseURL}},
+      "sameAs" : [
+        {{metadata.socialMedia.facebook}},
+        {{metadata.socialMedia.instagram}},
+        {{metadata.socialMedia.pinterest}}
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#maincontent">Skip to main content</a>
+    <header class="header">
+      <nav>
+        <ul class="nav">
+        {%- for entry in collections.all | eleventyNavigation %}
+          <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        {%- endfor %}
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main" id="maincontent">
+      {{ content | safe }}  
+    </main>
+
+    <footer class="footer">
+      <span>© {% currentYear %} {{metadata.author.name}}</span>
+      <div class="social">
+        <a target="_blank" rel="noopener noreferrer" aria-label="Follow me on Instagram" title="Follow me on Instagram" href="{{metadata.socialMedia.instagram}}">
+          {{ "/img/icons/instagram.svg" | svgContents | safe }}
+        </a>
+        <a target="_blank" rel="noopener noreferrer" aria-label="Follow me on Facebook"  title="Follow me on Facebook" href="{{metadata.socialMedia.facebook}}">
+          {{ "/img/icons/facebook.svg" | svgContents | safe }}
+        </a>
+        <a target="_blank" rel="noopener noreferrer" aria-label="Follow me on Pinterest" title="Follow me on Pinterest" href="{{metadata.socialMedia.pinterest}}">
+          {{ "/img/icons/pinterest.svg" | svgContents | safe }}
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+# Uncomment the following line and link your production sitemap
+# https://www.woorank.com/en/blog/how-to-locate-a-sitemap-in-a-robots-txt-file
+# Sitemap: https://example.com/sitemap.xml
+User-agent:*
+Disallow:

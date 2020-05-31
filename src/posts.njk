@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+permalink: /articles/
+pageTitle: Articles
+eleventyNavigation:
+  key: Articles
+  order: 2
+---
+
+<div class="wide-content">
+  <h1>All articles</h1>
+  {% set postslist = collections.posts %}
+  {% include "components/postslist.njk" %}
+</div>
